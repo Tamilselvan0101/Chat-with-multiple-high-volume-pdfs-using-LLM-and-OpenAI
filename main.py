@@ -4,6 +4,9 @@ from langchain.vectorstores import FAISS
 import os
 from langchain_openai.embeddings import OpenAIEmbeddings
 import tkinter as tk
+#pls enter your api
+APIKEYY=       #pls enter your api
+
 
 paragraph = ""
 
@@ -27,7 +30,7 @@ try :
     text_splitter = CharacterTextSplitter(separator="\n", chunk_size=1000, chunk_overlap=200, length_function=len)
     texts = text_splitter.split_text(paragraph)
     # Generate embeddings
-    embeddings = OpenAIEmbeddings(openai_api_key="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")
+    embeddings = OpenAIEmbeddings(openai_api_key=APIKEYY)
 
     # Process texts in smaller batches to avoid hitting the rate limit
     batch_size = 100  # Adjust this value based on your rate limit
@@ -43,7 +46,7 @@ try :
             pass
 
 
-    embeddings = OpenAIEmbeddings(openai_api_key="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")
+    embeddings = OpenAIEmbeddings(openai_api_key=APIKEYY)
     new_db=None
 
     tam=("Unica_0").format(i)
@@ -65,9 +68,9 @@ except:
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 
-chain = load_qa_chain(OpenAI(openai_api_key="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"), chain_type="stuff")
+chain = load_qa_chain(OpenAI(openai_api_key=APIKEYY), chain_type="stuff")
 
-embeddings = OpenAIEmbeddings(openai_api_key="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")
+embeddings = OpenAIEmbeddings(openai_api_key=APIKEYY)
 def search():
 
     query = input("enter")
