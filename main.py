@@ -49,15 +49,18 @@ try :
     embeddings = OpenAIEmbeddings(openai_api_key=APIKEYY)
     new_db=None
 
-    tam=("Unica_0").format(i)
-    if new_db is None:
-        new_db = FAISS.load_local(tam, embeddings)
-        print(i)
+    templent=os.listdir("unicadbfold")
+    print(templent)
+    for i in templent:
+        tam=("unicadbfold/{}").format(i)
+        if new_db is None:
+            new_db = FAISS.load_local(tam, embeddings)
+            print(i)
 
-    else:
-        batch_storage = FAISS.load_local(tam,embeddings)
-        new_db.merge_from(batch_storage)
-        print(i)
+        else:
+            batch_storage = FAISS.load_local(tam,embeddings)
+            new_db.merge_from(batch_storage)
+            print(i)
 
 
     new_db.save_local("uncaDBall")
